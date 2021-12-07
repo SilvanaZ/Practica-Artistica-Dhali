@@ -1,6 +1,16 @@
+let { products} = require('../database/dataBase')
+
 let controller = {
     detail: (req, res) => {
-        res.render('productDetail')
+        let productDetail = +req.params.id;
+         
+        
+
+        let product = product.find(product => product.id === productDetailId)
+        
+        res.render('productDetail', {
+            product
+        })
     }
 }
 
