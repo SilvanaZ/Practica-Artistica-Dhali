@@ -8,12 +8,14 @@
                 <div class="carousel-cell  productSlide">
                     <div class="productDiscount"><%- product.discount %>% OFF</div>
                     <img src="/images/productos/<%- product.image[0] %>" alt="<%- product.name %>">
-                    <p class="productName"><%- product.name %></p>
-                    <h4 class="productPrice">$<%- product.price - product.price * product.discount / 100 %></h4>
-                </div>
-            </a>
-        <% }) %>
-
+                    <p class="productName"> 
+                        <% if (product.name.length > 30) { %>
+                            <%- `${product.name.slice(0,30)}...` %>
+                        <% } else { %>
+                            <%= product.name %>
+                        <% } %>
+                    </p>
+                </a>
     </div>
 
 </section> 
