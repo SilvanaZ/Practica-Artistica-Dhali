@@ -1,4 +1,4 @@
-let { products} = require('../database/dataBase')
+let { products, categories } = require('../database/dataBase')
 
 let controller = {
     detail: (req, res) => {
@@ -13,16 +13,18 @@ let controller = {
             sliderProducts: relatedProducts
         })
     },
-    category: (req, res)=>{
+    category: (req, res) => {
         let categoryId = +req.params.id;
 
-        let productsCategory = products.filter(product => product.category === +productId)
+        let productsCategory = products.filter(product => +product.category === categoryId)
         let category = categories.find(category => category.id === categoryId)
-        let subcategories = productsCategory.mp(roduct => product.category === )
-        let uniqueSubcategories = sub
+        let subcategories = productsCategory.map(product => product.subcategory)
+        let uniqueSubcategories = subcategories.filter((x, i, a) => a.indexOf(x) == i)
+
         res.render('categories', {
             products: productsCategory,
-            category
+            category,
+            subcategories: uniqueSubcategories
         })
     }
 }
