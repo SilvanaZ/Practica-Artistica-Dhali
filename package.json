@@ -1,0 +1,26 @@
+{
+  "name": "practica-artistica-dhali",
+  "version": "1.0.0",
+  "description": "Practica de cursada",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilvanaZ/Practica-Artistica-Dhali.git"
+  },
+  "keywords": [
+    "3000"
+  ],
+  "author": "Jonathan Cespedes, usa Silvana Zalazar.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SilvanaZ/Practica-Artistica-Dhali/issues"
+  },
+  "homepage": "https://github.com/SilvanaZ/Practica-Artistica-Dhali#readme"
+}
