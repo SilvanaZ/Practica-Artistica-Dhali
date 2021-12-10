@@ -17,14 +17,18 @@
     
                 <div class="col-12">
                     <select class="form-select categorySelect" id="specificSizeSelect" name="category">
-                      <option selected hidden value="">Categorias</option>
-                      <option value=""></option>
-                    </select>
+                        <option selected hidden value="">Categorias</option>
+                      <% categories.forEach(category => { %>
+                          <option value="<%- category.id %>"><%- category.name %> </option>
+                      <% }) %>
+                      </select>
+  
                     <small class="text-danger">Selecciona una categoría</small>
                 </div>
                 <div class="col-12">
                     <select class="form-select subcategorySelect" id="specificSizeSelect" name="subcategory">
-                      <option selected hidden value="">Subcategorias</option>
+                      <option selected hidden value="<% subcategory.name %>"><%  subcategory %></option>
+                
                     </select>
                     <small class="text-danger">Selecciona una subcategoria</small>
                 </div>

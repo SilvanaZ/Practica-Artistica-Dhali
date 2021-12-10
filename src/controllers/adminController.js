@@ -1,4 +1,4 @@
-const {products, writeProductsJSON } = require('../database/dataBase')
+const {products, writeProductsJSON, categories } = require('../database/dataBase')
 
 let controller = {
     index: (req, res)=>{
@@ -8,7 +8,9 @@ let controller = {
         res.render('/admin/adminProducts')
     },
     create: (req, res)=>{
-        res.render('/admin/adminProductCreateForm')
+        res.render('/admin/adminProductCreateForm', {
+            categories
+        })
     },
     store: (req, res) => {
         let lastId = 1;
