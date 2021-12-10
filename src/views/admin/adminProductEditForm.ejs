@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <select class="form-select categorySelect" id="specificSizeSelect" name="category">
                       <option selected hidden value="">Categorias</option>
-                      <option value=""></option>
+                      <option value="<%- category.id %>"><% subcategory === product.subcategory ? "selected" %> </option>
                     </select>
                     <small class="text-danger">Selecciona una categoría</small>
                 </div>

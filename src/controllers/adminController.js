@@ -47,10 +47,27 @@ let controller = {
         res.redirect('/admin/products')
     },
     edit: (req, res)=>{
-        res.render('/admin/adminProductEditForm')
-    },
-    update: (req, res) =>{
+        let productId = +req.params.id
 
+        let product = product.find(product => product.id === productId)
+        res.render('/admin/adminProductEditForm',{
+        product,
+        categories,
+        subcategories: uniqueSubcategories
+    });
+},
+    update: (req, res) =>{
+        let productId = +req.params.id;
+
+        let newProduct = {
+            id: lastId + 1,
+            name: name.trim(),
+            price: +price.trim(),
+            category: +category,
+            subcategory,
+            description: description.trim(),
+            discount: +discount,
+            image: req.file ? req.file.filename : "default-image.png"
     },
     destroy: (req, res)=>{
 
