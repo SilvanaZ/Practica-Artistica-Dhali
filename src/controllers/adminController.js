@@ -22,6 +22,7 @@ let controller = {
         const {name, price, category, subcategory, description, discount} = req.body
 
         let newProduct = {
+            id: lastId + 1,
             name: name.trim(),
             price: +price.trim(),
             category: +category,
@@ -41,7 +42,7 @@ let controller = {
 
         writeProductsJSON(products)
 
-        req.redirect('/admin/products')
+        res.redirect('/admin/products')
     },
     edit: (req, res)=>{
         res.render('/admin/adminProductEditForm')
