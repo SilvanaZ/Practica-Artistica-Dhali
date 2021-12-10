@@ -1,6 +1,6 @@
 const {products, writeProductsJSON } = require('../database/dataBase')
 
-let controller ={
+let controller = {
     index: (req, res)=>{
     res.render('/admin/adminIndex')
     },
