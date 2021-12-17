@@ -4,7 +4,8 @@
   "description": "Practica de cursada",
   "main": "index.js",
   "dependencies": {
-    "ejs": "^3.1.6"
+    "ejs": "^3.1.6",
+    "express-validator": "^6.14.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,5 +1,6 @@
+const { validationResult } = require('express-validator')
 const {products, writeProductsJSON, categories } = require('../database/dataBase')
-
+let 
 let controller = {
     index: (req, res)=>{
     res.render('/admin/adminIndex')
@@ -13,6 +14,10 @@ let controller = {
         })
     },
     store: (req, res) => {
+        let errors= validationResult(req)
+        if{errors.inEmpty()
+
+        }else{}
         let lastId = 1;
 
         products.forEach(product => {

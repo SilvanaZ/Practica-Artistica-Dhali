@@ -12,8 +12,10 @@
                 <div class="col-12">
                     <label for="inputName" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="inputName" name="name" value="">
-                    <small class="text-danger">Ingresa un nombre</small>
-                </div>
+                    <% if (locals.erors && error.nme){
+                        <small class="text-danger">Ingresa un nombre%></small>
+                   <% } %>
+                </div> 
     
                 <div class="col-12">
                     <select class="form-select categorySelect" id="specificSizeSelect" name="category">
