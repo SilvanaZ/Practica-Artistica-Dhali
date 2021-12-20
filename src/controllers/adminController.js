@@ -14,8 +14,8 @@ let controller = {
         })
     },
     store: (req, res) => {
-        let errors= validationResult(req)
-        if{errors.inEmpty()
+        let error= validationResult(req)
+        if{errors.inEmpty
 
         }else{}
         let lastId = 1;
