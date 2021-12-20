@@ -285,5 +285,13 @@
     "category": "1",
     "subcategory": "Repuestos",
     "image": ["repuestoRivadavia.jpg"]
-}
-]
+}, {
+    "id": 33,
+    "name": "Jona",
+    "price": 123,
+    "category": 3,
+    "subcategory": "Mochilas",
+    "description": "\" \"",
+    "discount": 0,
+    "image": ["default-image.png"]
+}]
