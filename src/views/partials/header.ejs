@@ -68,13 +68,21 @@
        </form>
 
        <!-- Iconos de usuario escritorio -->
-       <div class="user-icons-desktop">
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-cart"></i>
-        </div>
-
+       <div class="user">
+        <% if (typeof session.user != "undefined") { %>
+            <i class="fas fa-user"></i><span class="session"></span>
+            <div class="menu-user">
+                <a href="/users/profile">Mis datos</a>
+                <a href="/users/logout">Cerrar sesión</a>
+                <% if (session.user.rol === 1) { %>
+                    <a href="/admin/index">ADMIN</a>
+                <% } %>
+            </div>
+        <% } else {%>
+            <a href="/users/login"><i class="fas fa-user"></i></a>
+        <% } %>
     </div>
-    <nav class="nav_menu">
+
 
         <!-- Buscador Mobile -->
 
@@ -126,7 +134,4 @@
 
     </nav>
 </header>
-
-<% if(locals.session.user){
-    <h1> <%=  %> </h1>
-<% } %> 
+ 

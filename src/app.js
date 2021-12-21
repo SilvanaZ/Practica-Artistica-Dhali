@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 const PORT = 3000
 const methodOverride = require('method-override')
+const cookieSession =require('./middlewares/cookieSession')
 
 /* Middlewares */
 app.use(express.static(path.join(__dirname, '../public')));
@@ -11,7 +12,9 @@ app.set("view engine", "ejs") // Setea el template engine
 app.set('views', path.join(__dirname, 'views')) // Indica la ubicación de la carpeta views 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(methodOverride('_method'))
+app.use(session)
+app.use(cookiesparser())
 
 /* Enrutadores */
 let indexRouter = require('./routes/index')

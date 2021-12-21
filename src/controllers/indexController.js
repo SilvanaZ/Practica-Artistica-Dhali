@@ -7,7 +7,8 @@ let controller = {
         
         res.render('home', {
             sliderTitle: "Ofertas destacadas",
-            sliderProducts: productsInSale
+            sliderProducts: productsInSale,
+            session: req.session
         })
     }
 }

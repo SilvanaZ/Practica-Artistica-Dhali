@@ -12,9 +12,8 @@ module.exports=[
     .withMessage('Debes escribir tu contraseña'),
     
     body('custom')
-    .custom({value {req}) => {
-        let user = users.find(user => user.mail == req.body.email);
-
+    .custom(value {req}) => {
+        let user = users.find(user => user.email === req.body.email),
         if(user){
         this.if(user.pass === req.body.pass)
         return true

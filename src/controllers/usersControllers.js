@@ -9,7 +9,17 @@ let controller = {
         let errors = validationResult(req);
 
         if(errors.isEmpty()){
-            
+       let user = users.find(user => user.email === req.body.email)
+       
+       req.session.user = {
+        id: user.id,
+        name:user.name,
+        last_name: user.last_name,
+        email: user.email,
+        avatar: user.avatar,
+        rol: user.rol
+       }
+
         }else{
             res.render('login', {
                 errors: errors.mapped()
@@ -65,7 +75,13 @@ let controller = {
             res.redirect('/users/login')
 
         }
-    },
-}
+        logout: (req, res) =>{
+            req.session.dstroy();
+            if(req.cookie.userArtisticaDhali){
+                ress.cookie('userArtisticaDhali', "",{maxAge: -1 })
+            }
+            res.redirect
+        }
+    }
 
 module.exports = controller
