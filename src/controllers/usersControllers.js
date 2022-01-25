@@ -1,5 +1,6 @@
 const { users } = require('../database/dataBase');
 const { validationResult } = require('express-validator')
+const bcrypt = require('bcrypt')
 
 let controller = {
     login: (req, res) => {
@@ -27,7 +28,9 @@ let controller = {
         }
     },
     register: (req, res) => {
-        res.render('register')
+        res.render('register',{
+            session: req.session
+        })
     },
     processRegister: (req, res) => {
         let errors = validationResult(req);
@@ -74,7 +77,7 @@ let controller = {
 
             res.redirect('/users/login')
 
-        }
+        },
         logout: (req, res) =>{
             req.session.dstroy();
             if(req.cookie.userArtisticaDhali){
