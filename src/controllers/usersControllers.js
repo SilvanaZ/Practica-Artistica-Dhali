@@ -2,6 +2,13 @@ const { users } = require('../database/dataBase');
 const { validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
 
+const db = require('../database/models')
+
+const Products = db.Product;
+const user = db.user; 
+const Categories = db.Category; 
+const Subcategories = db.Subcategory;
+
 let controller = {
     login: (req, res) => {
         res.render('login')

@@ -1,18 +1,41 @@
 let { products, categories } = require('../database/dataBase')
 
+const db = require('../database/models')
+
+const Products = db.Product;
+const user = db.user; 
+const Categories = db.Category; 
+const Subcategories = db.Subcategory;
+
 let controller = {
     detail: (req, res) => {
-        let productDetailId = +req.params.id;
+        Products.findOne({
+            where: {
+                id: req.params.id,
+            },
+            include: [{association: 'productImages'}]
+        })
+        .then((product => {
+Products.findAll({
+    where: {
+        subcategoryId: product.subcategoryId
+    }
+})
+.then(products) => {
+    res.render('productDetail', {
+        product,
+        sliderTitle: "Productos relacionados",
+        sliderProducts: relatedProducts,
+        session: req.session
+})
+}
+        /* let productDetailId = +req.params.id;
 
         let product = products.find(product => product.id === productDetailId)
         let relatedProducts = products.filter(relatedProduct => relatedProduct.category === product.category)
         
-        res.render('productDetail', {
-            product,
-            sliderTitle: "Productos relacionados",
-            sliderProducts: relatedProducts,
-            session: req.session
-        })
+        
+        }) */
     },
     category: (req, res) => {
         let categoryId = +req.params.id;
