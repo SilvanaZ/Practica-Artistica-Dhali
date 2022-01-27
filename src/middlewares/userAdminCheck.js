@@ -1,11 +1,7 @@
-const USER_ROL = "USER";
-
-function userAdminCheck(req, res, next) {
-    if(USER_ROL === "USER_ADMIN"){
+module.exports = (req, res, next) => {
+    if (req.session.user.rol === 1) {
         next()
-    }else{
-        res.status().redirect('/users/login')
+    } else {
+        res.redirect('/')
     }
-} 
-
-module.exports = userAdminCheck
+}

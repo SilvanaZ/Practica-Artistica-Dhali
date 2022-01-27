@@ -1,7 +1,9 @@
 <header>
     <div class="main-header">
        <div class="logo">
-           <img src="/images/logo/logo.png" alt="">
+        <a href="/">
+          <img src="/images/logo/logo.png" alt="">
+        </a>
        </div>
 
        <i class="fas fa-bars burguer-menu-icon" onclick="dropMenu()"></i>
@@ -10,22 +12,23 @@
        <nav class="navigation-bar" id="navigation-bar-mobile">
 
         <div class="user-icons-mobile">
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-cart"></i>
+            <a href="/users/login"><i class="fas fa-user"></i></a>
+            <a href="/"><i class="fas fa-shopping-cart"></i></a>
         </div>
+      
 
         <!-- Lista con los elementos del menú (categorías) -->
         <ul class="menu">
             <li class="dropdown-menu" onclick="dropSubCategoryMenu(`school`)">
-               Escolar
+                <a href="/products/category/1">Escolar</a> 
                 <i class="fas fa-chevron-down" ></i>
             </li>
             <li class="dropdown-menu" onclick="dropSubCategoryMenu(`art`)">
-               Artística
+                <a href="/products/category/2">Artística</a> 
                 <i class="fas fa-chevron-down" ></i>
             </li>
             <li class="dropdown-menu" onclick="dropSubCategoryMenu(`office`)">
-               Oficina
+                <a href="/products/category/3">Oficina</a> 
                 <i class="fas fa-chevron-down" ></i>
             </li>
             <li><a href="">Contacto</a></li>
@@ -52,7 +55,6 @@
             <li><a href="">Contacto</a></li>
         </ul>
        </nav>
-
        <!-- Icono del buscador en header mobile -->
        <div class="search-icon" onclick="dropSearch()">
         <i class="fas fa-search"></i>
@@ -60,35 +62,40 @@
 
        <!-- Buscador escritorio -->
 
-       <form action="" class="search-form-desktop">
+       <form action="/products/search" method="GET" class="search-form-desktop">
            <div class="search-bar">
-               <input type="search" name="" id="">
+               <input type="search" name="keywords" >
                <button type="submit"><i class="fas fa-search"></i></button>
            </div>
        </form>
 
        <!-- Iconos de usuario escritorio -->
-       <div class="user">
-        <% if (typeof session.user != "undefined") { %>
-            <i class="fas fa-user"></i><span class="session"></span>
-            <div class="menu-user">
-                <a href="/users/profile">Mis datos</a>
-                <a href="/users/logout">Cerrar sesión</a>
-                <% if (session.user.rol === 1) { %>
-                    <a href="/admin/index">ADMIN</a>
+        <div class="user-icons-desktop">
+            <div class="user">
+                <% if (typeof session.user != "undefined") { %>
+                    <i class="fas fa-user"></i><span class="session"></span>
+                    <div class="menu-user">
+                        <a href="/users/profile">Mis datos</a>
+                        <a href="/users/logout">Cerrar sesión</a>
+                        <% if (session.user.rol === "ROL_ADMIN") { %>
+                            <a href="/admin/products">ADMIN</a>
+                        <% } %>
+                    </div>
+                <% } else {%>
+                    <a href="/users/login"><i class="fas fa-user"></i></a>
                 <% } %>
             </div>
-        <% } else {%>
-            <a href="/users/login"><i class="fas fa-user"></i></a>
-        <% } %>
+            <a href="/"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+        
     </div>
-
+    <nav class="nav_menu">
 
         <!-- Buscador Mobile -->
 
-        <form action="" class="search-form-mobile" id="search">
+        <form action="/products/search" method="GET" class="search-form-mobile" id="search">
             <div class="search-bar">
-                <input type="search" name="" id="" placeholder="Buscar productos">
+                <input type="search" name="keywords" placeholder="Buscar productos">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -130,8 +137,7 @@
                 <li><a href="">Subcategoria</a></li>
             </ul>
         </div>
-
-
     </nav>
 </header>
- 
+
+

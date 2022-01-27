@@ -7,7 +7,7 @@
             <a href="/products/detail/<%- product.id %>">
                 <div class="carousel-cell  productSlide">
                     <div class="productDiscount"><%- product.discount %>% OFF</div>
-                    <img src="/images/productos/<%- product.image[0] %>" alt="<%- product.name %>">
+                    <img src="/images/productos/<%- product.image[0]%>" alt="<%- product.name %>">
                     <p class="productName"> 
                         <% if (product.name.length > 30) { %>
                             <%- `${product.name.slice(0,30)}...` %>
@@ -15,7 +15,10 @@
                             <%= product.name %>
                         <% } %>
                     </p>
-                </a>
+                    <h4 class="productPrice">$<%- product.price - product.price * product.discount / 100 %></h4>
+                </div>
+            </a>
+        <% }) %>
     </div>
 
 </section> 

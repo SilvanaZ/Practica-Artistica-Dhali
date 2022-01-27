@@ -3,18 +3,26 @@ const app = express()
 const path = require('path')
 const PORT = 3000
 const methodOverride = require('method-override')
-const cookieSession =require('./middlewares/cookieSession')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const cookieSession = require('./middlewares/cookieSession')
 
 /* Middlewares */
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(methodOverride('_method'))
-app.set("view engine", "ejs") // Setea el template engine
-app.set('views', path.join(__dirname, 'views')) // Indica la ubicación de la carpeta views 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'))
-app.use(session)
-app.use(cookiesparser())
+app.use(session({
+    secret: "artisticaDali",
+    resave: false,
+    saveUninitialized: true
+}))
+app.use(cookieParser())
+app.use(cookieSession)
+
+
+app.set("view engine", "ejs") // Setea el template engine
+app.set('views', path.join(__dirname, 'views')) // Indica la ubicación de la carpeta views 
 
 /* Enrutadores */
 let indexRouter = require('./routes/index')
@@ -27,6 +35,11 @@ app.use('/', indexRouter)
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/admin', adminRouter)
+
+/* ERROR 404 */
+app.use((req, res, next) => {
+    res.status(404).render('404-page')
+})
 
 
 app.listen(PORT, () => console.log(`
