@@ -4,12 +4,12 @@ let subcategories = products.map(product => product.subcategory)
 let uniqueSubcategories = subcategories.filter((x, i, a) => a.indexOf(x) == i)
 let { validationResult } = require('express-validator')
 
-const db = require('../database/models')
+const db = require('../database/models');
 
 const Products = db.Product;
-const user = db.user; 
-const Categories = db.Category; 
+const Categories = db.Category;
 const Subcategories = db.Subcategory;
+
 
 let controller = {
     index: (req, res) => {

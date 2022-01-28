@@ -2,12 +2,9 @@ const { users, writeUsersJSON } = require('../database/dataBase');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 
-const db = require('../database/models')
+const db = require('../database/models');
 
-const Products = db.Product;
-const user = db.user; 
-const Categories = db.Category; 
-const Subcategories = db.Subcategory;
+const Users = db.User;
 
 let controller = {
     login: (req, res) => {
