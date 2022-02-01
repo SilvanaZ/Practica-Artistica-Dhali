@@ -41,6 +41,12 @@ let controller = {
     },
     store: (req, res) => {
         let errors = validationResult(req)
+        let arrayImages = [];
+        if(req.file){
+            req.files.forEach((image)=>{
+                arrayImages.push(image.filename)
+            })
+        }
 
         if (errors.isEmpty()) {
             const {name, price, category, subcategory, description, discount} = req.body
@@ -52,6 +58,18 @@ let controller = {
                 subcategoryId: subcategory,
             })
             .then((product) => {
+                if(arrayImages.length > 0){
+                 let images = arrayImages.map((image)=>{
+                     return {
+                         image: image,
+                         productId: product.id
+                     }
+                 });
+                ProductImages.bulkCreate(images)
+                .then(()=>{res.redirect('admin/products')})
+                }else{
+
+                }
                 ProductImages.create({
                     image: req.file ? req.file.filename : 'default-image.png',
                     productId: product.id
